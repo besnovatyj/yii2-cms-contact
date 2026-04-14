@@ -2,9 +2,9 @@
 
 declare(strict_types=1);
 
+use Besnovatyj\Altcha\widgets\AltchaWidget;
 use Besnovatyj\Contact\forms\MessageForm;
 use Besnovatyj\Contact\widgets\compose\ComposeWidget;
-use Besnovatyj\Hcaptcha\widgets\HCaptchaWidget;
 use yii\bootstrap5\ActiveForm;
 use yii\helpers\Html;
 use yii\helpers\Url;
@@ -37,18 +37,6 @@ $wrapperOptions['class'] = trim(
     <?php if ($widget->subtitle !== null): ?>
         <p class="text-muted mb-4"><?= Html::encode($widget->subtitle) ?></p>
     <?php endif ?>
-
-    <?php // ─── Flash-сообщения (результат предыдущей отправки) ─────────────────── ?>
-
-    <?php foreach (Yii::$app->session->getAllFlashes() as $type => $messages): ?>
-        <?php $alertType = ($type === 'success') ? 'success' : 'danger' ?>
-        <?php foreach ((array) $messages as $message): ?>
-            <div class="alert alert-<?= $alertType ?> alert-dismissible fade show" role="alert">
-                <?= Html::encode($message) ?>
-                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Закрыть"></button>
-            </div>
-        <?php endforeach ?>
-    <?php endforeach ?>
 
     <?php // ─── Форма ────────────────────────────────────────────────────────────── ?>
 
@@ -88,18 +76,14 @@ $wrapperOptions['class'] = trim(
             'placeholder' => 'Текст вашего сообщения...',
         ]) ?>
 
-        <?php // ─── hCaptcha (опционально, управляется showCaptcha="1") ───────────── ?>
+        <?php // ─── ALTCHA captcha ──────── ?>
 
-        <?php if ($widget->isCaptchaActive()): ?>
-            <?= Html::hiddenInput('MessageForm[captchaEnabled]', '1') ?>
             <div class="mt-3">
-                <?= HCaptchaWidget::widget([
-                    'model'       => $form,
-                    'attribute'   => 'captchaToken',
-                    'componentId' => $widget->captchaComponentId,
+                <?= AltchaWidget::widget([
+                    'model'     => $form,
+                    'attribute' => 'altcha',
                 ]) ?>
             </div>
-        <?php endif ?>
 
         <div class="d-grid gap-2 d-sm-flex justify-content-sm-start mt-3">
             <?= Html::submitButton(Html::encode($widget->submitLabel), [

@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Besnovatyj\Contact\widgets\compose;
 
 use Besnovatyj\Contact\forms\MessageForm;
-use Yii;
 use yii\base\Widget;
 
 /**
@@ -36,11 +35,6 @@ use yii\base\Widget;
  * [/contactForm]
  * ```
  *
- * С капчей (требует установленного besnovatyj/yii2-cms-hcaptcha-widget и компонента 'hcaptcha'):
- * ```
- * [contactForm, title="Свяжитесь с нами", showCaptcha="1"][/contactForm]
- * ```
- *
  * ## Прямое использование в шаблоне темы
  *
  * ```php
@@ -64,7 +58,7 @@ class ComposeWidget extends Widget
 
     /**
      * Подзаголовок / описание под заголовком формы.
-     * null — не отображать.
+     * `null` — не отображать.
      */
     public ?string $subtitle = null;
 
@@ -92,23 +86,6 @@ class ComposeWidget extends Widget
      * CSS-классы корневого блока-обёртки виджета.
      */
     public string $wrapperClass = 'contact-compose-widget';
-
-    // ─── Защита от ботов ─────────────────────────────────────────────────────
-
-    /**
-     * Показывать hCaptcha перед кнопкой отправки.
-     * Требует установленного пакета besnovatyj/yii2-cms-hcaptcha-widget
-     * и зарегистрированного компонента приложения (см. $captchaComponentId).
-     *
-     * Через шорткод: showCaptcha="1"
-     */
-    public bool $showCaptcha = false;
-
-    /**
-     * ID компонента hCaptcha в контейнере Yii2 (Yii::$app->get($captchaComponentId)).
-     * Используется для проверки наличия компонента перед рендером виджета.
-     */
-    public string $captchaComponentId = 'hcaptcha';
 
     // ─── Совместимость с шорткодами ───────────────────────────────────────────
 
@@ -155,21 +132,6 @@ class ComposeWidget extends Widget
     public function canSetProperty($name, $checkVars = true, $checkBehaviors = true): bool
     {
         return true;
-    }
-
-    // ─── Вспомогательные методы ───────────────────────────────────────────────
-
-    /**
-     * Проверяет, нужно ли рендерить hCaptcha.
-     * Возвращает true только если:
-     * - showCaptcha = true
-     * - компонент hCaptcha зарегистрирован в приложении
-     *
-     * Если компонент не установлен — форма работает без капчи без ошибок.
-     */
-    public function isCaptchaActive(): bool
-    {
-        return $this->showCaptcha && Yii::$app->has($this->captchaComponentId);
     }
 
     // ─── Рендеринг ────────────────────────────────────────────────────────────

@@ -4,10 +4,9 @@ declare(strict_types=1);
 
 namespace Besnovatyj\Contact\forms;
 
+use Besnovatyj\Altcha\validators\AltchaValidator;
 use Besnovatyj\Forms\BaseForm;
-use Besnovatyj\Hcaptcha\validators\HCaptchaValidator;
 use Yii;
-use yii\base\Model;
 
 /**
  * Форма отправки сообщения через контактную форму (фронтенд).
@@ -21,16 +20,11 @@ class MessageForm extends BaseForm
     public string  $body    = '';
 
     /**
-     * Токен hCaptcha. Заполняется JS-менеджером из бандла hcaptcha-виджета.
-     * Валидируется только когда captchaEnabled === '1'.
+     * Payload ALTCHA (base64 JSON). Заполняется web component'ом автоматически
+     * в момент решения proof-of-work задачи.
+     * Валидируется только когда модуль Altcha зарегистрирован в приложении.
      */
-    public string $captchaToken = '';
-
-    /**
-     * Признак того, что форма была отрендерена с капчей (hidden-поле из ComposeWidget).
-     * '1' — капча показана и обязательна; '' / '0' — капча не использовалась.
-     */
-    public string $captchaEnabled = '0';
+    public string $altcha = '';
 
     public function __construct($config = [])
     {
@@ -41,17 +35,25 @@ class MessageForm extends BaseForm
         parent::__construct($config);
     }
 
+    /**
+     * Проверяет, зарегистрирован ли модуль Altcha в приложении.
+     * Решение принимается на сервере — клиент не может обойти капчу.
+     */
+    public function isCaptchaRequired(): bool
+    {
+        return Yii::$app->getModule('Altcha') !== null;
+    }
+
     public function rules(): array
     {
         return [
             [['email', 'body'], 'required'],
             [['name', 'phone', 'subject', 'body'], 'string'],
             ['email', 'email'],
-            // Капча: валидируется только если форма была отрендерена с капчей
-            ['captchaEnabled', 'boolean'],
-            ['captchaToken', HCaptchaValidator::class,
+            // Капча: валидируется если модуль Altcha зарегистрирован (решение сервера, не клиента)
+            ['altcha', AltchaValidator::class,
                 'skipOnEmpty' => false,
-                'when' => static fn(self $model): bool => $model->captchaEnabled === '1',
+                'when' => fn(self $model): bool => $model->isCaptchaRequired(),
             ],
         ];
     }

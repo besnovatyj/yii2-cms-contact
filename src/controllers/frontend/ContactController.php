@@ -25,32 +25,30 @@ class ContactController extends Controller
 
     public function actionIndex(): Response|string
     {
-        $form = new ContactForm();
+//        $form = new ContactForm();
+//
+//        if ($form->load(Yii::$app->request->post()) && $form->validate()) {
+//            try {
+//                $this->service->send($form);
+//                Yii::$app->session->setFlash('success', 'Благодарим Вас за обращение к нам. Мы ответим вам при первой возможности.');
+//            } catch (Exception $e) {
+//                Yii::$app->errorHandler->logException($e);
+//                if (YII_DEBUG) {
+//                    Yii::$app->session->setFlash('error', VarDumper::dumpAsString($e->getMessage()));
+//                } else {
+//                    Yii::$app->session->setFlash('error', 'Ошибка');
+//                }
+//            }
+//        }
+//
+//        if ($form->hasErrors()) {
+//            $errors = $form->getErrorSummary(true);
+//            Yii::$app->session->addFlash('error', $errors);
+//        }
+//
+//        return $this->goReferer();
 
-        if ($form->load(Yii::$app->request->post()) && $form->validate()) {
-            try {
-                $this->service->send($form);
-                Yii::$app->session->setFlash('success', 'Благодарим Вас за обращение к нам. Мы ответим вам при первой возможности.');
-            } catch (Exception $e) {
-                Yii::$app->errorHandler->logException($e);
-                if (YII_DEBUG) {
-                    Yii::$app->session->setFlash('error', VarDumper::dumpAsString($e->getMessage()));
-                } else {
-                    Yii::$app->session->setFlash('error', 'Ошибка');
-                }
-            }
-        }
-
-        if ($form->hasErrors()) {
-            $errors = $form->getErrorSummary(true);
-            Yii::$app->session->addFlash('error', $errors);
-        }
-
-        return $this->goReferer();
-
-//        return $this->render('index', [
-//            'model' => $form,
-//        ]);
+        return $this->render('index');
     }
 
 }
