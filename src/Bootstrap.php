@@ -6,9 +6,11 @@ namespace Besnovatyj\Contact;
 
 use Besnovatyj\Contact\entities\events\MessageSent;
 use Besnovatyj\Contact\listeners\MessageSentListener;
-use common\components\dispatcher\dispatchers\SimpleEventDispatcher;
+use Besnovatyj\DomainEvents\dispatchers\SimpleEventDispatcher;
 use Yii;
 use yii\base\BootstrapInterface;
+use yii\base\InvalidConfigException;
+use yii\di\NotInstantiableException;
 
 /**
  * Bootstrap модуля Contact.
@@ -19,6 +21,10 @@ use yii\base\BootstrapInterface;
  */
 class Bootstrap implements BootstrapInterface
 {
+    /**
+     * @throws NotInstantiableException
+     * @throws InvalidConfigException
+     */
     public function bootstrap($app): void
     {
         // 1. Регистрация DI-зависимостей из dependencies.php

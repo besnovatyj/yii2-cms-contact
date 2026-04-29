@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Besnovatyj\Contact\migrations;
 
 use common\components\migration\BaseMigration;
+use yii\base\NotSupportedException;
 
 /**
  * Создаёт таблицу contacts (адресная книга).
@@ -13,6 +14,9 @@ class m250403_130000_create_contacts_table extends BaseMigration
 {
     public const string TABLE_NAME = '{{%contacts}}';
 
+    /**
+     * @throws NotSupportedException
+     */
     public function safeUp(): void
     {
         parent::safeUp();
@@ -31,9 +35,9 @@ class m250403_130000_create_contacts_table extends BaseMigration
                 ->comment('Телефон контакта'),
             'notes'      => $this->text()->null()
                 ->comment('Заметки'),
-            'created_at' => $this->integer()->notNull()
+            'created_at' => $this->dateTime()->notNull()->defaultExpression('NOW()')
                 ->comment('Дата создания (Unix timestamp)'),
-            'updated_at' => $this->integer()->notNull()
+            'updated_at' => $this->dateTime()->notNull()->defaultExpression('NOW()')
                 ->comment('Дата обновления (Unix timestamp)'),
         ], $this->tableOptions);
 

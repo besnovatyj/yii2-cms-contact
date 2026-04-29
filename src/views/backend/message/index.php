@@ -3,15 +3,17 @@
 use backend\widgets\grid\ActionColumn;
 use Besnovatyj\Contact\entities\Message;
 use Besnovatyj\Contact\forms\MessageSearch;
-use common\widgets\grid\SwitcherColumn;
+use Besnovatyj\SwitcherColumn\SwitcherColumn;
 use modules\user\components\Helper;
 use yii\bootstrap5\LinkPager;
+use yii\data\ActiveDataProvider;
 use yii\grid\GridView;
 use yii\helpers\Html;
+use yii\web\View;
 
-/* @var $this yii\web\View */
+/* @var $this View */
 /* @var $searchModel MessageSearch */
-/* @var $dataProvider yii\data\ActiveDataProvider */
+/* @var $dataProvider ActiveDataProvider */
 
 $this->title = 'Сообщения';
 $this->params['breadcrumbs'][] = $this->title;

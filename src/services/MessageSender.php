@@ -21,12 +21,12 @@ use Yii;
  *
  * @see ChannelInterface
  */
-class MessageSender
+readonly class MessageSender
 {
     /**
      * @param ChannelInterface[] $channels  Все зарегистрированные каналы
      */
-    public function __construct(private readonly array $channels)
+    public function __construct(private array $channels)
     {
     }
 

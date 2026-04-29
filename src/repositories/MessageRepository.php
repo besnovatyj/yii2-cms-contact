@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Besnovatyj\Contact\repositories;
 
 use Besnovatyj\Contact\entities\Message;
-use common\components\dispatcher\dispatchers\EventDispatcher;
+use Besnovatyj\DomainEvents\dispatchers\EventDispatcher;
 use RuntimeException;
 use Throwable;
 use yii\db\Exception;

@@ -4,7 +4,7 @@ declare(strict_types=1);
 
 namespace Besnovatyj\Contact\jobs;
 
-use common\components\dispatcher\jobs\Job;
+use Besnovatyj\DomainEvents\jobs\Job;
 
 /**
  * Задание очереди для отправки контактного сообщения через каналы уведомлений.

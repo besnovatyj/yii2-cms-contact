@@ -5,13 +5,13 @@ declare(strict_types=1);
 namespace Besnovatyj\Contact\forms;
 
 use Besnovatyj\Contact\entities\Message;
-use yii\base\Model;
+use Besnovatyj\Forms\BaseForm;
 use yii\data\ActiveDataProvider;
 
 /**
  * Форма поиска и фильтрации сообщений в админке.
  */
-class MessageSearch extends Model
+class MessageSearch extends BaseForm
 {
     public ?int    $id          = null;
     public ?string $name        = null;
@@ -33,6 +33,7 @@ class MessageSearch extends Model
 
     /**
      * @param array $params
+     * @return ActiveDataProvider
      */
     public function search(array $params): ActiveDataProvider
     {

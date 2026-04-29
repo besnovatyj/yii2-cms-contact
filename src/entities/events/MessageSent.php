@@ -5,7 +5,7 @@ declare(strict_types=1);
 namespace Besnovatyj\Contact\entities\events;
 
 use Besnovatyj\Contact\entities\Message;
-use common\components\dispatcher\EntityEvent;
+use Besnovatyj\DomainEvents\EntityEvent;
 
 /**
  * Событие: новое сообщение через контактную форму сохранено в БД.

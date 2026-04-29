@@ -8,7 +8,7 @@ use Besnovatyj\Contact\entities\Message;
 use Besnovatyj\Contact\forms\MessageSearch;
 use Besnovatyj\Contact\services\MessageService;
 use common\components\controller\ControllerTrait;
-use common\widgets\grid\actions\SwitcherAction;
+use Besnovatyj\SwitcherColumn\actions\SwitcherAction;
 use Exception;
 use Throwable;
 use Yii;

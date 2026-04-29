@@ -23,14 +23,6 @@ class Module extends BaseModule
     public const string SEND_METHOD_TELEGRAM = 'telegram';  // Telegram
     public const string SEND_METHOD_ALL      = 'all';       // Все каналы
 
-    public function init(): void
-    {
-        parent::init();
-        if (\Yii::$app->id === 'app-frontend') {
-            $this->controllerNamespace = 'Besnovatyj\\' . $this->id . '\controllers\frontend';
-        }
-    }
-
     public static function getAdminMenu(): array
     {
         return require __DIR__ . '/config/adminMenu.php';

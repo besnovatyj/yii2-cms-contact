@@ -33,8 +33,8 @@ class Contact extends ActiveRecord
         $contact->email       = $email;
         $contact->name        = $name;
         $contact->phone       = $phone;
-        $contact->created_at  = time();
-        $contact->updated_at  = time();
+        $contact->created_at  = new \DateTimeImmutable()->format('Y.m.d H:i:s');
+        $contact->updated_at  = $contact->created_at;
         return $contact;
     }
 

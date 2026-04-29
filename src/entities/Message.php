@@ -5,8 +5,8 @@ declare(strict_types=1);
 namespace Besnovatyj\Contact\entities;
 
 use Besnovatyj\Contact\entities\events\MessageSent;
-use common\components\dispatcher\AggregateRoot;
-use common\components\dispatcher\EventTrait;
+use Besnovatyj\DomainEvents\AggregateRoot;
+use Besnovatyj\DomainEvents\EventTrait;
 use DomainException;
 use yii\db\ActiveRecord;
 
@@ -63,7 +63,7 @@ class Message extends ActiveRecord implements AggregateRoot
         $message->phone       = $phone;
         $message->subject     = $subject;
         $message->body        = $body;
-        $message->date        = time();
+        $message->date        = new \DateTimeImmutable()->format('Y.m.d H:i:s');
         $message->seen        = self::VIEW_STATUS_NEW;
         $message->send_method = $sendMethod;
         $message->send_status = self::SEND_STATUS_PENDING;

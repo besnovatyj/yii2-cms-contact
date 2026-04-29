@@ -8,7 +8,7 @@ use Besnovatyj\Contact\repositories\MessageRepository;
 use Besnovatyj\Contact\services\AddressBookService;
 use Besnovatyj\Contact\services\MessageSender;
 use Besnovatyj\Contact\services\MessageService;
-use common\components\dispatcher\dispatchers\SimpleEventDispatcher;
+use Besnovatyj\DomainEvents\dispatchers\SimpleEventDispatcher;
 
 /**
  * DIC-конфигурация модуля Contact.
