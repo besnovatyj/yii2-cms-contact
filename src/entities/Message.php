@@ -67,7 +67,7 @@ class Message extends ActiveRecord implements AggregateRoot
         $message->seen        = self::VIEW_STATUS_NEW;
         $message->send_method = $sendMethod;
         $message->send_status = self::SEND_STATUS_PENDING;
-        $message->recordEvent(new MessageSent($message));
+        $message->recordEvent(new MessageSent($message)); // TODO: Вынос в сервис `$entity->recordEvent()`. Там после этого `$repo->save();`
         return $message;
     }
 

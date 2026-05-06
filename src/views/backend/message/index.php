@@ -1,11 +1,11 @@
 <?php
 
-use backend\widgets\grid\ActionColumn;
+use Besnovatyj\Backend\Widgets\grid\ActionColumn;
 use Besnovatyj\Contact\entities\Message;
 use Besnovatyj\Contact\forms\MessageSearch;
 use Besnovatyj\SwitcherColumn\SwitcherColumn;
 use modules\user\components\Helper;
-use yii\bootstrap5\LinkPager;
+use Besnovatyj\Backend\Widgets\pagination\LinkPager;
 use yii\data\ActiveDataProvider;
 use yii\grid\GridView;
 use yii\helpers\Html;
@@ -26,10 +26,8 @@ $sendStatusLabels = [
 ];
 ?>
 
-<div class="card rounded-0">
-    <div class="card-header">
-        <h3 class="card-title"><?= $this->title ?></h3>
-    </div>
+<div class="card">
+    <div class="card-header"><?= $this->title ?></div>
     <div class="card-body">
         <?= GridView::widget([
             'dataProvider' => $dataProvider,

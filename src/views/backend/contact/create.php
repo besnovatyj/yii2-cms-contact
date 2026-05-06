@@ -13,10 +13,8 @@ $this->params['breadcrumbs'][] = ['label' => 'Адресная книга', 'url
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 
-<div class="card rounded-0">
-    <div class="card-header">
-        <h3 class="card-title"><?= $this->title ?></h3>
-    </div>
+<div class="card">
+    <div class="card-header"><?= $this->title ?></div>
     <div class="card-body">
         <?php $activeForm = ActiveForm::begin() ?>
 

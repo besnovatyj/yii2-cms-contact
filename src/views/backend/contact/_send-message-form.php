@@ -12,7 +12,7 @@ $formId = 'send-message-form-' . $contact->id;
 $action = Url::to(['send-message', 'id' => $contact->id]);
 ?>
 
-<div class="card rounded-0 border-primary">
+<div class="card border-primary">
     <div class="card-header bg-primary text-white d-flex align-items-center">
         <span class="me-auto">
             <i class="bi bi-envelope"></i>

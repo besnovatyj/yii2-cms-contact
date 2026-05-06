@@ -1,10 +1,10 @@
 <?php
 
-use backend\widgets\grid\ActionColumn;
+use Besnovatyj\Backend\Widgets\grid\ActionColumn;
 use Besnovatyj\Contact\entities\Contact;
 use Besnovatyj\Contact\forms\ContactSearch;
 use modules\user\components\Helper;
-use yii\bootstrap5\LinkPager;
+use Besnovatyj\Backend\Widgets\pagination\LinkPager;
 use yii\grid\GridView;
 use yii\helpers\Html;
 use yii\helpers\Url;
@@ -19,9 +19,9 @@ $this->params['breadcrumbs'][] = $this->title;
 
 <!-- Панель для HTMX-формы отправки письма -->
 <div id="send-message-panel" class="mt-3"></div>
-<div class="card rounded-0">
+<div class="card">
     <div class="card-header d-flex align-items-center">
-        <h3 class="card-title me-auto"><?= $this->title ?></h3>
+        <div class="card-title me-auto"><?= $this->title ?></div>
         <?php if (Helper::checkRoute('contact/create')): ?>
             <a href="<?= Url::to(['create']) ?>" class="btn btn-sm btn-primary">
                 <i class="bi bi-plus-circle"></i> Добавить контакт

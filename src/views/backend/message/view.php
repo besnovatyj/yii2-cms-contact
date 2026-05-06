@@ -21,9 +21,8 @@ $sendStatusLabels = [
 ];
 ?>
 
-<div class="card rounded-0">
-    <div class="card-header">
-        <h3 class="card-title"><?= Html::encode($this->title) ?></h3>
+<div class="card">
+    <div class="card-header"><?= Html::encode($this->title) ?>
         <div class="card-tools">
             <?php if ($model->isNew()): ?>
                 <a href="<?= Url::to(['/Contact/backend/message/seen', 'id' => $model->id]) ?>"

@@ -14,9 +14,9 @@ $this->params['breadcrumbs'][] = ['label' => 'Адресная книга', 'url
 $this->params['breadcrumbs'][] = $this->title;
 ?>
 
-<div class="card rounded-0">
+<div class="card">
     <div class="card-header d-flex align-items-center">
-        <h3 class="card-title me-auto"><?= Html::encode($this->title) ?></h3>
+        <div class="card-title me-auto"><?= Html::encode($this->title) ?></div>
         <div class="card-tools d-flex gap-2">
             <a href="<?= Url::to(['update', 'id' => $model->id]) ?>"
                class="btn btn-sm btn-warning">

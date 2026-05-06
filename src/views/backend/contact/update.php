@@ -16,10 +16,8 @@ $this->params['breadcrumbs'][] = ['label' => ($model->name ?: $model->email), 'u
 $this->params['breadcrumbs'][] = 'Редактировать';
 ?>
 
-<div class="card rounded-0">
-    <div class="card-header">
-        <h3 class="card-title"><?= Html::encode($this->title) ?></h3>
-    </div>
+<div class="card">
+    <div class="card-header"><?= Html::encode($this->title) ?></div>
     <div class="card-body">
         <?php $activeForm = ActiveForm::begin() ?>
 
