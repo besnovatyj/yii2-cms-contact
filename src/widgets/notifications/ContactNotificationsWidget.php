@@ -14,13 +14,10 @@ use yii\bootstrap5\Widget;
  */
 class ContactNotificationsWidget extends Widget
 {
-    /**
-     * @throws InvalidConfigException
-     */
     public function run(): string
     {
+        // $this->context->module ???????
         $module = '\Besnovatyj\Contact\Module';
-
         if (!$module::isInstalled()) {
             return '';
         }
