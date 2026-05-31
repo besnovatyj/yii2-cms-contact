@@ -1,4 +1,4 @@
-Посмотри на модуль "app/tmp_composer_packages/besnovatyj/yii2-cms-contact".
+Посмотри на модуль "app/packages/besnovatyj/yii2-cms-contact".
 
 1) Я хочу отдельный функционал в виде адресной книги, чтобы при успешной отправке письма в ней сохранялись данные
    отправителя, так же чтобы был удобный crud в админке для адресной книги.
@@ -20,8 +20,8 @@
 
 
 Заметка: Параметры изменяемые в админке можно задавать с помощью модуля
-`app/tmp_composer_packages/besnovatyj/yii2-cms-config`,
-описание его работы в файле `app/tmp_composer_packages/besnovatyj/yii2-cms-config/src/README.md`.
+`app/packages/besnovatyj/yii2-cms-config`,
+описание его работы в файле `app/packages/besnovatyj/yii2-cms-config/src/README.md`.
 
 
 ---

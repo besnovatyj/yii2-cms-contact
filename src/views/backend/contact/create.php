@@ -1,5 +1,10 @@
 <?php
 
+
+/*
+ * Copyright (c) 2026 Besnovatyj. Licensed under the MIT License.
+ */
+
 use Besnovatyj\Contact\forms\ContactForm;
 use yii\bootstrap5\ActiveForm;
 use yii\helpers\Html;

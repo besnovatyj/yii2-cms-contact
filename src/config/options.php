@@ -1,4 +1,9 @@
 <?php
+
+/*
+ * Copyright (c) 2026 Besnovatyj. Licensed under the MIT License.
+ */
+
 // Все опции должны быть определены при установке (подключении) модуля в приложение
 return [
 
