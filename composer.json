@@ -14,7 +14,8 @@
   "extra": {
     "moduleClass": "Besnovatyj\\Contact\\Module",
     "moduleId": "Contact",
-    "bootstrap": "Besnovatyj\\Contact\\Bootstrap"
+    "bootstrap": "Besnovatyj\\Contact\\Bootstrap",
+    "bescms": { "kind": "module" }
   },
   "keywords": [
     "yii2",
