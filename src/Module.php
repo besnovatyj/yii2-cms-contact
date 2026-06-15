@@ -9,10 +9,10 @@ declare(strict_types=1);
 namespace Besnovatyj\Contact;
 
 use common\components\module\CmsModule;
-use modules\modmanNew\contract\DeclaresModule;
-use modules\modmanNew\contract\ProvidesAdminMenu;
-use modules\modmanNew\contract\ProvidesMigrations;
-use modules\modmanNew\contract\ProvidesOptions;
+use modules\modman\contract\DeclaresModule;
+use modules\modman\contract\ProvidesAdminMenu;
+use modules\modman\contract\ProvidesMigrations;
+use modules\modman\contract\ProvidesOptions;
 
 /**
  * Модуль контактных форм и адресной книги.
