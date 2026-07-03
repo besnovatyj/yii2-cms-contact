@@ -14,7 +14,7 @@ use Besnovatyj\Contact\forms\ContactForm;
 use Besnovatyj\Contact\forms\ContactSearch;
 use Besnovatyj\Contact\forms\SendMessageForm;
 use Besnovatyj\Contact\services\AddressBookService;
-use common\components\controller\ControllerTrait;
+use Besnovatyj\Kernel\controller\ControllerTrait;
 use Exception;
 use Throwable;
 use Yii;

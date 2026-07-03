@@ -12,7 +12,7 @@ namespace Besnovatyj\Contact\controllers\backend;
 use Besnovatyj\Contact\entities\Message;
 use Besnovatyj\Contact\forms\MessageSearch;
 use Besnovatyj\Contact\services\MessageService;
-use common\components\controller\ControllerTrait;
+use Besnovatyj\Kernel\controller\ControllerTrait;
 use Besnovatyj\SwitcherColumn\actions\SwitcherAction;
 use Exception;
 use Throwable;

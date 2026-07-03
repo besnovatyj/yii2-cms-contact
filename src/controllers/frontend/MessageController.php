@@ -11,7 +11,7 @@ namespace Besnovatyj\Contact\controllers\frontend;
 
 use Besnovatyj\Contact\forms\MessageForm;
 use Besnovatyj\Contact\services\MessageService;
-use common\components\controller\ControllerTrait;
+use Besnovatyj\Kernel\controller\ControllerTrait;
 use Exception;
 use Yii;
 use yii\helpers\VarDumper;

@@ -7,7 +7,7 @@
 
 namespace Besnovatyj\Contact\controllers\frontend;
 
-use common\components\controller\ControllerTrait;
+use Besnovatyj\Kernel\controller\ControllerTrait;
 use Exception;
 use Besnovatyj\Contact\forms\ContactForm;
 use Besnovatyj\Contact\services\ContactService;
