@@ -10,7 +10,7 @@ declare(strict_types=1);
 namespace Besnovatyj\Contact\widgets\notifications;
 
 use Besnovatyj\Contact\entities\Message;
-use modules\user\components\Helper;
+use Besnovatyj\User\components\Helper;
 use yii\base\InvalidConfigException;
 use yii\bootstrap5\Widget;
 
