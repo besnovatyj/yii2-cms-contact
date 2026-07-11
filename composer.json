@@ -14,7 +14,10 @@
     "moduleClass": "Besnovatyj\\Contact\\Module",
     "moduleId": "Contact",
     "bootstrap": "Besnovatyj\\Contact\\Bootstrap",
-    "bescms": { "kind": "module" }
+    "bescms": { "kind": "module" },
+    "config-plugin": {
+      "common": "src/config/common.php"
+    }
   },
   "keywords": [
     "yii2",
