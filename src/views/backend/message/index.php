@@ -9,7 +9,7 @@ use Besnovatyj\Backend\Widgets\grid\ActionColumn;
 use Besnovatyj\Contact\entities\Message;
 use Besnovatyj\Contact\forms\MessageSearch;
 use Besnovatyj\SwitcherColumn\SwitcherColumn;
-use Besnovatyj\User\components\Helper;
+use Besnovatyj\Kernel\security\AccessHelper;
 use Besnovatyj\Backend\Widgets\pagination\LinkPager;
 use yii\data\ActiveDataProvider;
 use yii\grid\GridView;
@@ -75,7 +75,7 @@ $sendStatusLabels = [
                 ],
                 [
                     'class'    => ActionColumn::class,
-                    'template' => Helper::filterActionColumn(['view', 'delete']),
+                    'template' => AccessHelper::filterActionColumn(['view', 'delete']),
                 ],
             ],
         ]); ?>

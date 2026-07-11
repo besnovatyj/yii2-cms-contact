@@ -10,7 +10,7 @@ declare(strict_types=1);
 namespace Besnovatyj\Contact\widgets\notifications;
 
 use Besnovatyj\Contact\entities\Message;
-use Besnovatyj\User\components\Helper;
+use Besnovatyj\Kernel\security\AccessHelper;
 use yii\base\InvalidConfigException;
 use yii\bootstrap5\Widget;
 
@@ -29,7 +29,7 @@ class ContactNotificationsWidget extends Widget
 
         $messages = Message::find()->unseen()->all();
 
-        if (!Helper::checkRoute('contact/view')) {
+        if (!AccessHelper::checkRoute('contact/view')) {
             return '';
         }
 

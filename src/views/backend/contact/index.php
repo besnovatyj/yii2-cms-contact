@@ -8,7 +8,7 @@
 use Besnovatyj\Backend\Widgets\grid\ActionColumn;
 use Besnovatyj\Contact\entities\Contact;
 use Besnovatyj\Contact\forms\ContactSearch;
-use Besnovatyj\User\components\Helper;
+use Besnovatyj\Kernel\security\AccessHelper;
 use Besnovatyj\Backend\Widgets\pagination\LinkPager;
 use yii\grid\GridView;
 use yii\helpers\Html;
@@ -27,7 +27,7 @@ $this->params['breadcrumbs'][] = $this->title;
 <div class="card">
     <div class="card-header d-flex align-items-center">
         <div class="card-title me-auto"><?= $this->title ?></div>
-        <?php if (Helper::checkRoute('contact/create')): ?>
+        <?php if (AccessHelper::checkRoute('contact/create')): ?>
             <a href="<?= Url::to(['create']) ?>" class="btn btn-sm btn-primary">
                 <i class="bi bi-plus-circle"></i> Добавить контакт
             </a>
@@ -47,7 +47,7 @@ $this->params['breadcrumbs'][] = $this->title;
                 'created_at:datetime:Добавлен',
                 [
                     'class'    => ActionColumn::class,
-                    'template' => Helper::filterActionColumn(['view', 'update', 'delete']) . ' {write}',
+                    'template' => AccessHelper::filterActionColumn(['view', 'update', 'delete']) . ' {write}',
                     'buttons'  => [
                         'write' => static function ($url, Contact $model) {
                             return Html::a(
