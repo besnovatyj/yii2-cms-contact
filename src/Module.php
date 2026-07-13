@@ -11,6 +11,7 @@ namespace Besnovatyj\Contact;
 use Besnovatyj\Kernel\module\CmsModule;
 use Besnovatyj\Contracts\module\DeclaresModule;
 use Besnovatyj\Contracts\module\ProvidesAdminMenu;
+use Besnovatyj\Contracts\module\ProvidesBootstrap;
 use Besnovatyj\Contracts\module\ProvidesMigrations;
 use Besnovatyj\Contracts\module\ProvidesOptions;
 
@@ -19,7 +20,7 @@ use Besnovatyj\Contracts\module\ProvidesOptions;
  */
 class Module extends CmsModule implements
     DeclaresModule, ProvidesAdminMenu,
-    ProvidesMigrations, ProvidesOptions
+    ProvidesBootstrap, ProvidesMigrations, ProvidesOptions
 {
     public const bool EDITABLE = true;
     public const string VERSION = '1.0.0';
@@ -45,5 +46,6 @@ class Module extends CmsModule implements
     public static function options(): array { return require __DIR__.'/config/options.php'; }
     public static function migrationPath(): string { return __DIR__.'/migrations'; }
     public static function migrationNamespace(): ?string { return __NAMESPACE__.'\\migrations'; }
+    public static function bootstrapClasses(): array { return [Bootstrap::class]; }
 
 }

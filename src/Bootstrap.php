@@ -21,8 +21,9 @@ use yii\di\NotInstantiableException;
  * Bootstrap модуля Contact.
  *
  * Регистрирует DIC-зависимости и слушателей событий.
- * Должен выполняться при старте приложения — указать в composer.json:
- *   "extra": { "bootstrap": "Besnovatyj\\Contact\\Bootstrap" }
+ * Выполняется при старте приложения ТОЛЬКО у активного модуля (L2, гейт modman):
+ * класс объявлен в {@see Module::bootstrapClasses()} и попадает во вклад
+ * `'bootstrap' => [...]` config-plugin файла `config/common.php`.
  */
 class Bootstrap implements BootstrapInterface
 {
