@@ -51,6 +51,9 @@ $wrapperOptions['class'] = trim(
         'options' => ['novalidate' => true],
     ]) ?>
 
+        <?php // Адрес страницы, где встроен виджет: контроллёр вернёт отправителя именно сюда ?>
+        <?= Html::hiddenInput('returnUrl', Yii::$app->request->url) ?>
+
         <?php if ($widget->showName): ?>
             <?= $activeForm->field($form, 'name')->textInput([
                 'placeholder'  => 'Ваше имя',

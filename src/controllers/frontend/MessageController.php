@@ -38,7 +38,7 @@ class MessageController extends Controller
      * Приём POST-данных контактной формы.
      * Форма работает через AJAX/стандартный submit — ответ через flash и редирект на referrer.
      */
-    public function actionIndex(): Response|string
+    public function actionIndex(): Response
     {
         $form = new MessageForm();
 
@@ -62,6 +62,30 @@ class MessageController extends Controller
             Yii::$app->session->addFlash('error', $form->getErrorSummary(true));
         }
 
-        return $this->goReferer();
+        return $this->redirectBack();
+    }
+
+    /**
+     * Возврат на страницу, откуда было отправлено письмо.
+     *
+     * Виджет формы встраивается на произвольную страницу (шорткоды и т.д.) и передаёт
+     * её адрес явным скрытым полем `returnUrl` — так возврат детерминирован и не зависит
+     * от заголовка Referer (в dev он режется middleware Traefik
+     * `strict-origin-when-cross-origin`, из-за чего goReferer() уходил в бесконечный
+     * редирект сам на себя через свой дефолтный fallback `['index']`).
+     *
+     * Принимается только локальный относительный путь (начинается с одного `/`) —
+     * это исключает open redirect на внешний хост. Если поля нет (напр. другой виджет),
+     * резервно возвращаемся по Referer средствами goReferer().
+     */
+    private function redirectBack(): Response
+    {
+        $returnUrl = (string)Yii::$app->request->post('returnUrl', '');
+
+        if ($returnUrl !== '' && str_starts_with($returnUrl, '/') && !str_starts_with($returnUrl, '//')) {
+            return $this->redirect($returnUrl);
+        }
+
+        return $this->goReferer(Yii::$app->homeUrl);
     }
 }
