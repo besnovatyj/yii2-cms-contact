@@ -9,18 +9,22 @@ declare(strict_types=1);
 namespace Besnovatyj\Contact;
 
 use Besnovatyj\Kernel\module\CmsModule;
+use Besnovatyj\Contracts\dashboard\DashboardWidgetDescriptor;
+use Besnovatyj\Contracts\dashboard\ProvidesDashboardWidgets;
 use Besnovatyj\Contracts\module\DeclaresModule;
 use Besnovatyj\Contracts\module\ProvidesAdminMenu;
 use Besnovatyj\Contracts\module\ProvidesBootstrap;
 use Besnovatyj\Contracts\module\ProvidesMigrations;
 use Besnovatyj\Contracts\module\ProvidesOptions;
+use Besnovatyj\Contact\widgets\dashboard\UnreadMessagesTile;
 
 /**
  * Модуль контактных форм и адресной книги.
  */
 class Module extends CmsModule implements
     DeclaresModule, ProvidesAdminMenu,
-    ProvidesBootstrap, ProvidesMigrations, ProvidesOptions
+    ProvidesBootstrap, ProvidesMigrations, ProvidesOptions,
+    ProvidesDashboardWidgets
 {
     public const bool EDITABLE = true;
     public const string VERSION = '1.0.0';
@@ -47,5 +51,19 @@ class Module extends CmsModule implements
     public static function migrationPath(): string { return __DIR__.'/migrations'; }
     public static function migrationNamespace(): ?string { return __NAMESPACE__.'\\migrations'; }
     public static function bootstrapClasses(): array { return [Bootstrap::class]; }
+
+    /** @return DashboardWidgetDescriptor[] */
+    public static function dashboardWidgets(): array
+    {
+        return [
+            new DashboardWidgetDescriptor(
+                id: self::MODULE_ID . '.unreadMessages',
+                title: 'Сообщения',
+                tileClass: UnreadMessagesTile::class,
+                iconClass: 'bi bi-envelope',
+                priority: 150,
+            ),
+        ];
+    }
 
 }
